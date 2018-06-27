@@ -39,7 +39,7 @@ var ballSpeedXY = [10, -10];
 function getDistance(x1, y1, x2, y2) {
     let xDistance = x2 - x1;
     let yDistance = y2 - y1;
-    return Math.sqrt(Math.pow(xDistance, 2.5) + Math.pow(yDistance, 2));
+    return Math.sqrt(Math.pow(xDistance, 2.3) + Math.pow(yDistance, 2));
 
 }
 
@@ -176,13 +176,13 @@ var r = {
     /* if the ball is over the racket, pick a random number bettwen 0 and -11 and acelerate upwards
     * unfurtunately i haven´t resolve an issue involving the speed refreshing each frame...*/
     else if (ball.y < r.y){
-        r.dy = Math.floor(Math.random() * -11);
+        r.dy = Math.floor(Math.random() * -12);
         r.y += r.dy;
 
     }
     // if ball is under the racket pick a random value bettwen 0 and 11 and acelerate downward.
     else if ( ball.y > r.y) {
-        r.dy = Math.floor(Math.random() * 11);
+        r.dy = Math.floor(Math.random() * 12);
         r.y += r.dy;
     }
 
@@ -228,7 +228,7 @@ var score = {
     draw: function () {
         c.font = "70px Arial Black";
         c.textAlign = "center"
-        c.fillText(lScore,this.x + 600, this.y - 300);
+        c.fillText(lScore,this.x + 290, this.y - 300);
         c.font = "70px Arial Black";
         c.textAlign = "center"
         c.fillText(RScore,this.x + 950, this.y - 300);
@@ -245,6 +245,7 @@ function main() {
     //give bg color
     c.fillStyle = "black";
     c.fillRect(0, 0, innerWidth, innerHeight);
+
 
     // call elements to frame!
     l.update();
