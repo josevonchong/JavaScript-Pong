@@ -228,10 +228,10 @@ var score = {
     draw: function () {
         c.font = "70px Arial Black";
         c.textAlign = "center"
-        c.fillText(lScore,this.x + 290, this.y - 300);
+        c.fillText(lScore,window.innerWidth / 2 / 1.5, window.innerHeight / 2 / 2);
         c.font = "70px Arial Black";
         c.textAlign = "center"
-        c.fillText(RScore,this.x + 950, this.y - 300);
+        c.fillText(RScore,window.innerWidth / 2 * 1.5 , window.innerHeight/ 2 / 2);
     }
 
 }
