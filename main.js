@@ -39,7 +39,7 @@ var ballSpeedXY = [10, -10];
 function getDistance(x1, y1, x2, y2) {
     let xDistance = x2 - x1;
     let yDistance = y2 - y1;
-    return Math.sqrt(Math.pow(xDistance, 2.3) + Math.pow(yDistance, 2));
+    return Math.sqrt(Math.pow(xDistance, 2.3) + Math.pow(yDistance, 1.9));
 
 }
 
@@ -69,8 +69,8 @@ var ball = {
 
         //calculates the collision and bounce with screen width and add +1 score to lScore var
         if (this.x > window.innerWidth - this.radius ) {
-            this.dx = -this.dx
-            reboot = true
+            this.dx = -this.dx;
+            reboot = true;
             lScore += 1
         }
         //calculates the collision and bounce with negative screen with and add +1 score to RScore var
@@ -85,11 +85,11 @@ var ball = {
 
         }
         //Here i use the getDistance function i create before to calculate the collision betwen the ball and the rackets
-        if (getDistance(l.x, l.y, ball.x, ball.y) < ball.radius + l.h) {
+        if (getDistance(l.x, l.y, ball.x, ball.y) + this.dy < ball.radius + l.h + ball.dy ) {
             ball.dx = -ball.dx
         }
         //collision for second racket
-        if (getDistance(r.x, r.y, ball.x, ball.y) < ball.radius + r.h) {
+        if (getDistance(r.x, r.y, ball.x, ball.y) + this.dy < ball.radius + r.h + ball.dy) {
             ball.dx = -ball.dx
         }
         //If a point is added, this condition will reboot the ball to the center of the screen and throw it at a random direction
@@ -120,7 +120,7 @@ var net = {
         //creates the net
         c.strokeStyle = "white";
         c.beginPath();
-        c.setLineDash([5, 10]);
+        c.setLineDash([9, 10]);
         c.moveTo(window.innerWidth / 2, window.innerHeight / 2);
         c.lineTo(window.innerWidth / 2, -window.innerHeight);
         c.lineWidth = 5;
@@ -128,7 +128,7 @@ var net = {
 
         c.strokeStyle = "white";
         c.beginPath();
-        c.setLineDash([5, 10]);
+        c.setLineDash([9, 10]);
         c.moveTo(window.innerWidth / 2, window.innerHeight / 2);
         c.lineTo(window.innerWidth / 2, window.innerHeight);
         c.lineWidth = 5;
@@ -176,13 +176,13 @@ var r = {
     /* if the ball is over the racket, pick a random number bettwen 0 and -11 and acelerate upwards
     * unfurtunately i haven´t resolve an issue involving the speed refreshing each frame...*/
     else if (ball.y < r.y){
-        r.dy = Math.floor(Math.random() * -12);
+        r.dy = Math.floor(Math.random() * -20);
         r.y += r.dy;
 
     }
     // if ball is under the racket pick a random value bettwen 0 and 11 and acelerate downward.
     else if ( ball.y > r.y) {
-        r.dy = Math.floor(Math.random() * 12);
+        r.dy = Math.floor(Math.random() * 20);
         r.y += r.dy;
     }
 
